@@ -1,21 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class BomEnemy : MonoBehaviour
+public class BombEnemy : MonoBehaviour
 {
-    [SerializeField] private float timer;
+    [SerializeField] private float bombTimer;
     public GameObject mbledos;
     public bool isMbledos;
 
     private void Start()
     {
-        StartCoroutine(boomBebek());
+        StartCoroutine(BombBebek());
     }
 
-    private IEnumerator boomBebek()
+    private IEnumerator BombBebek()
     {
-        yield return new WaitForSeconds(timer);
+        yield return new WaitForSeconds(bombTimer);
         Instantiate(mbledos, transform.position, Quaternion.identity);
         isMbledos = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -33,7 +35,5 @@ public class BomEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    
 
 }
