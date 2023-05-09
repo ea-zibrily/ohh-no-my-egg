@@ -21,6 +21,8 @@ public class BombEnemy : MonoBehaviour
         Instantiate(mbledos, transform.position, Quaternion.identity);
         isMbledos = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

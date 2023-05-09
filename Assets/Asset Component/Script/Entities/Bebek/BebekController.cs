@@ -14,6 +14,7 @@ public class BebekController : MonoBehaviour
     {
         public float bebekSpeed;
         public bool bebekNgananLur;
+        public bool bebekSatu;
     }
     
     public BebekStats bebekStats;
@@ -42,9 +43,18 @@ public class BebekController : MonoBehaviour
     private void BebekNgambang()
     {
         float x, y;
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
 
+        if(bebekStats.bebekSatu)
+        {
+            x = Input.GetAxisRaw("Horizontal1");
+            y = Input.GetAxisRaw("Vertical1");
+        }
+        else
+        {
+            x = Input.GetAxisRaw("Horizontal2");
+            y = Input.GetAxisRaw("Vertical2");
+        }
+        
         myRb.velocity = new Vector2(x * bebekStats.bebekSpeed, y * bebekStats.bebekSpeed);
     }
     
