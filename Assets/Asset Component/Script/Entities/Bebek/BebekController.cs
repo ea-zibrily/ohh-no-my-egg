@@ -13,8 +13,9 @@ public class BebekController : MonoBehaviour
     public struct BebekStats
     {
         public float bebekSpeed;
-        public bool bebekNgananLur;
+        [HideInInspector] public bool bebekNgananLur;
         public bool bebekSatu;
+        public Vector2 bebekVelocity;
     }
     
     public BebekStats bebekStats;
@@ -37,6 +38,7 @@ public class BebekController : MonoBehaviour
     private void FixedUpdate()
     {
         BebekNgambang();
+        BebekAnimasi();
         DireksiBebek();
     }
 
@@ -55,19 +57,19 @@ public class BebekController : MonoBehaviour
             y = Input.GetAxisRaw("Vertical2");
         }
         
-        myRb.velocity = new Vector2(x * bebekStats.bebekSpeed, y * bebekStats.bebekSpeed);
+        bebekStats.bebekVelocity = new Vector2(x, y);
+        
+        myRb.velocity = bebekStats.bebekVelocity * bebekStats.bebekSpeed;
     }
     
     private void DireksiBebek()
     {
-        var bebekVelocity = myRb.velocity;
-        
-        if(bebekVelocity.x > 0 && !bebekStats.bebekNgananLur)
+        if(bebekStats.bebekVelocity.x > 0 && !bebekStats.bebekNgananLur)
         {
             BebekMuter();
         }
         
-        if(bebekVelocity.x < 0 && bebekStats.bebekNgananLur)
+        if(bebekStats.bebekVelocity.x < 0 && bebekStats.bebekNgananLur)
         {
             BebekMuter();
         }
@@ -77,6 +79,20 @@ public class BebekController : MonoBehaviour
     {
         bebekStats.bebekNgananLur = !bebekStats.bebekNgananLur;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    private void BebekAnimasi()
+    {
+        if (bebekStats.bebekVelocity != Vector2.zero)
+        {
+            myAnim.SetFloat("Horizontal", bebekStats.bebekVelocity.x);
+            myAnim.SetFloat("Vertical", bebekStats.bebekVelocity.y);
+            myAnim.SetBool("isWalk", true);
+        }
+        else
+        {
+            myAnim.SetBool("isWalk", false);
+        }
     }
 
 }
