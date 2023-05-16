@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 1841906283
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 40132868, guid: 6bbd5a48bfd2a2647bf8fc73e6e7016c, type: 3}
+  m_Sprite: {fileID: -532241533, guid: c8dcd57be03e55245bdd23264f08e38a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6875, y: 1.1875}
+    oldSize: {x: 1.3125, y: 1.375}
     newSize: {x: 1.6875, y: 1.1875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,7 +150,6 @@ MonoBehaviour:
   bebekStats:
     bebekSpeed: 6
     bebekNgananLur: 0
-    bebekSatu: 1
     bebekVelocity: {x: 0, y: 0}
 --- !u!95 &6034014755888762901
 Animator:

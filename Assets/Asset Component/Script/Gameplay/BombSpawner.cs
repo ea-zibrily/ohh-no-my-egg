@@ -1,22 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class BombSpawner : MonoBehaviour
 {
-    [Header("Main Component")] 
+    [Header("Bomb Position Component")] 
     [SerializeField] private float maxBombPositionX;
     [SerializeField] private float minBombPositionX;
     [SerializeField] private float maxBombPositionY;
     [SerializeField] private float minBombPositionY;
-    private Transform bombPublicPosition;
-    
-    [Space]
+
+    [Header("Bomb Spawn Component")] 
     [SerializeField] private float bombSpawnTimer;
+    [SerializeField] private bool isBombDestroyed;
+    private int bombCount;
     public GameObject bombPrefabs;
     
-    void Update()
+    [Header("Reference")]
+    private BombEventHandler bombEventHandler;
+
+
+    private void OnEnable()
     {
+        bombEventHandler.OnBombDestroy += BombDestroyed;
+    }
+    
+    private void OnDisable()
+    {
+        bombEventHandler.OnBombDestroy -= BombDestroyed;
+    }
+
+    private void Update()
+    {
+        if (isBombDestroyed)
+        {
+            return;
+        }
+        
         StartCoroutine(AyoSpawnBom());
     }
 
@@ -24,12 +47,23 @@ public class BombSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(bombSpawnTimer);
         
-        for (int i = 0; i < 3; i++)
+        if (bombCount < 3)
         {
-            var bombPosition = bombPublicPosition.position = new Vector2
-                (Random.Range(minBombPositionX, maxBombPositionX), Random.Range(minBombPositionY, maxBombPositionY));
+            var bombRandomPosition = new Vector2(Random.Range(minBombPositionX, maxBombPositionX),
+                Random.Range(minBombPositionY, maxBombPositionY));
             
-            Instantiate(bombPrefabs, bombPosition, Quaternion.identity);
+            Instantiate(bombPrefabs, bombRandomPosition, Quaternion.identity);
+            bombCount++;
         }
+        else
+        {
+            isBombDestroyed = true;
+        }
+    }
+
+    private void BombDestroyed()
+    {
+        isBombDestroyed = false;
+        bombCount = 0;
     }
 }
