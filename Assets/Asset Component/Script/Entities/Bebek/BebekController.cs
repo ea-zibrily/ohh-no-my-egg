@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -24,6 +25,7 @@ public class BebekController : MonoBehaviour
 
     private Rigidbody2D myRb;
     private Animator myAnim;
+    private PhotonView myView;
 
     #endregion
     
@@ -31,12 +33,17 @@ public class BebekController : MonoBehaviour
     {
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
+        myView = GetComponent<PhotonView>();
     }
 
     private void FixedUpdate()
     {
-        BebekNgambang();
-        DireksiBebek();
+        //make so player can only move their own character
+        if(myView.IsMine)
+        {
+            BebekNgambang();
+            DireksiBebek();
+        }
     }
 
     private void BebekNgambang()

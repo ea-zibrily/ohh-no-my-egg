@@ -640,6 +640,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BanyardDuck
       objectReference: {fileID: 0}
+    - target: {fileID: 3314599479304606191, guid: 129b405f06665954fbc6788b029167f2, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3808336738425240791, guid: 129b405f06665954fbc6788b029167f2, type: 3}
       propertyPath: m_Size.x
       value: 1.4270918
@@ -665,6 +669,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3930065630084088310, guid: f8d720feb8cd8f446bd793e193d9d3bc, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5351145903855088522, guid: f8d720feb8cd8f446bd793e193d9d3bc, type: 3}
       propertyPath: m_Size.x
       value: 1.3976488
