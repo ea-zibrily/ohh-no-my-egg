@@ -43,7 +43,7 @@ public class BebekController : MonoBehaviour
         if(myView.IsMine)
         {
             BebekNgambang();
-            DireksiBebek();
+            BebekAnimasi();
         }
     }
 
