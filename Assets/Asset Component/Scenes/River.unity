@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 931844378}
   m_Layer: 0
   m_Name: BombSpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,8 +429,10 @@ MonoBehaviour:
   minBombPositionX: -8
   maxBombPositionY: 4
   minBombPositionY: -4
+  bombQuantity: 5
   bombSpawnTimer: 5
-  isBombSpawned: 0
+  isBombDestroyed: 0
+  bombCount: 0
   bombPrefabs: {fileID: 7240399476574280180, guid: ed857919d713c844096093b6dc5a1d99, type: 3}
 --- !u!1 &954331399
 GameObject:

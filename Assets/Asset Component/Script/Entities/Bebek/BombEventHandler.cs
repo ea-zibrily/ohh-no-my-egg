@@ -5,8 +5,17 @@ using UnityEngine;
 
 public class BombEventHandler : MonoBehaviour
 {
-    public event Action OnBombDestroy;
-    
-    public void BombIsDestroyed() => OnBombDestroy?.Invoke();
+    private BombSpawner bombSpawner;
+
+    private void Awake()
+    {
+        bombSpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<BombSpawner>();
+    }
+
+    public void BombIsDestroyed()
+    {
+        bombSpawner.isBombDestroyed = false;
+        bombSpawner.bombCount = 0;
+    }
     public void DestroyBombAnimation() => Destroy(gameObject);
 }

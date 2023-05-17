@@ -38,7 +38,7 @@ public class BebekController : MonoBehaviour
     {
         BebekNgambang();
         BebekAnimasi();
-        DireksiBebek();
+        // DireksiBebek();
     }
 
     private void BebekNgambang()

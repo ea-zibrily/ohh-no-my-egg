@@ -14,24 +14,11 @@ public class BombSpawner : MonoBehaviour
     [SerializeField] private float minBombPositionY;
 
     [Header("Bomb Spawn Component")] 
+    [SerializeField] private int bombQuantity;
     [SerializeField] private float bombSpawnTimer;
-    [SerializeField] private bool isBombDestroyed;
-    private int bombCount;
+    public bool isBombDestroyed { get; set; }
+    public int bombCount { get; set; }
     public GameObject bombPrefabs;
-    
-    [Header("Reference")]
-    private BombEventHandler bombEventHandler;
-
-
-    private void OnEnable()
-    {
-        bombEventHandler.OnBombDestroy += BombDestroyed;
-    }
-    
-    private void OnDisable()
-    {
-        bombEventHandler.OnBombDestroy -= BombDestroyed;
-    }
 
     private void Update()
     {
@@ -47,7 +34,7 @@ public class BombSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(bombSpawnTimer);
         
-        if (bombCount < 3)
+        if (bombCount < bombQuantity)
         {
             var bombRandomPosition = new Vector2(Random.Range(minBombPositionX, maxBombPositionX),
                 Random.Range(minBombPositionY, maxBombPositionY));
@@ -66,4 +53,5 @@ public class BombSpawner : MonoBehaviour
         isBombDestroyed = false;
         bombCount = 0;
     }
+    
 }
