@@ -18,7 +18,7 @@ public class BombSpawner : MonoBehaviour
     [SerializeField] private float bombSpawnTimer;
     public bool isBombDestroyed { get; set; }
     public int bombCount { get; set; }
-    public GameObject bombPrefabs;
+    public GameObject[] bombPrefabs;
 
     private void Update()
     {
@@ -36,10 +36,11 @@ public class BombSpawner : MonoBehaviour
         
         if (bombCount < bombQuantity)
         {
+            int bombPrefabIndex = Random.Range(0, bombPrefabs.Length);
             var bombRandomPosition = new Vector2(Random.Range(minBombPositionX, maxBombPositionX),
                 Random.Range(minBombPositionY, maxBombPositionY));
             
-            Instantiate(bombPrefabs, bombRandomPosition, Quaternion.identity);
+            Instantiate(bombPrefabs[bombPrefabIndex], bombRandomPosition, Quaternion.identity);
             bombCount++;
         }
         else
@@ -48,10 +49,4 @@ public class BombSpawner : MonoBehaviour
         }
     }
 
-    private void BombDestroyed()
-    {
-        isBombDestroyed = false;
-        bombCount = 0;
-    }
-    
 }

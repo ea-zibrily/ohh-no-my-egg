@@ -60,10 +60,10 @@ GameObject:
   - component: {fileID: 7240399476574280181}
   - component: {fileID: 7240399475411219999}
   - component: {fileID: 7240399476574280183}
-  - component: {fileID: 7240399476574280168}
   - component: {fileID: 7240399475411219994}
+  - component: {fileID: -2121914082792796125}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: BombMove
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,22 +173,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
---- !u!114 &7240399476574280168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7240399476574280180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950c5bced7d4c9143a32dd591376011f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombTimer: 7.05
-  mbledos: {fileID: 6188646490060140370, guid: 63f1b348d6eba6641a8717ac47da5658, type: 3}
-  isMbledos: 0
+  m_Radius: 1.5
 --- !u!95 &7240399475411219994
 Animator:
   serializedVersion: 5
@@ -209,3 +194,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-2121914082792796125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240399476574280180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2873a7f5e4ec8aff1dd60fe32a213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombSpeed: 8
+  bombTimer: 7.05
+  mbledos: {fileID: 6188646490060140370, guid: 63f1b348d6eba6641a8717ac47da5658, type: 3}
+  isMbledos: 0

@@ -15,6 +15,7 @@ public class BebekController : MonoBehaviour
     {
         public float bebekSpeed;
         [HideInInspector] public bool bebekNgananLur;
+        public bool bebekStun;
         public Vector2 bebekVelocity;
     }
     
@@ -36,25 +37,29 @@ public class BebekController : MonoBehaviour
         myAnim = GetComponent<Animator>();
         myView = GetComponent<PhotonView>();
     }
-
+    
     private void FixedUpdate()
     {
         //make so player can only move their own character
         if(myView.IsMine)
         {
             BebekNgambang();
-            DireksiBebek();
+            BebekAnimasi();
         }
     }
 
     private void BebekNgambang()
     {
         float x, y;
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
         
-        bebekStats.bebekVelocity = new Vector2(x, y);
-        myRb.velocity = bebekStats.bebekVelocity * bebekStats.bebekSpeed;
+        if (!bebekStats.bebekStun)
+        {
+            x = Input.GetAxisRaw("Horizontal");
+            y = Input.GetAxisRaw("Vertical");
+            
+            bebekStats.bebekVelocity = new Vector2(x, y);
+            myRb.velocity = bebekStats.bebekVelocity * bebekStats.bebekSpeed;
+        }
     }
     
     private void DireksiBebek()
@@ -89,5 +94,18 @@ public class BebekController : MonoBehaviour
             myAnim.SetBool("isWalk", false);
         }
     }
+    
+    public void BebekStuner()
+    {
+        myRb.velocity = Vector2.zero;
+        myAnim.SetBool("isStun", true);
+        bebekStats.bebekStun = true;
+    }
 
+    public void SetToNormal()
+    {
+        bebekStats.bebekStun = false;
+        myAnim.SetBool("isStun", false);
+    }
+   
 }
