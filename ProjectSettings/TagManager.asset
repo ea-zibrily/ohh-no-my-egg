@@ -8,6 +8,9 @@ TagManager:
   - Egg
   - EggSpawner
   - BombSpawner
+  - Bullet
+  - PlayerOnePoint
+  - PlayerTwoPoint
   layers:
   - Default
   - TransparentFX

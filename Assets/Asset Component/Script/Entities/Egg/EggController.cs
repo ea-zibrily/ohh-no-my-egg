@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EggController : MonoBehaviour
 {
+    public PlayerManager playerManager;
+    
     private void Update()
     {
         StartCoroutine(DestroyEgg());
@@ -19,7 +21,8 @@ public class EggController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerManager.Instance.AddEggPoint();
+            //PlayerManager.Instance.AddEggPoint();
+            other.GetComponent<PlayerManager>().AddEggPoint();
             Destroy(gameObject);
         }
     }

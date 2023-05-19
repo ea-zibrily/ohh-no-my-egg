@@ -1,4 +1,55 @@
-﻿/*
+﻿using UnityEngine;
+using Photon.Pun;
+using TMPro;
+
+public class GameManager : MonoSingleton<GameManager>
+{
+    [SerializeField] private GameObject playerOne;
+    [SerializeField] private GameObject playerOneSpawn;
+    [SerializeField] private GameObject playerTwo;
+    [SerializeField] private GameObject playerTwoSpawn;
+
+
+    private void Start()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+            Debug.Log("Player count in room: " + playerCount);
+            if(playerCount <= 1)
+            {
+                while(playerOne.GetComponent<PlayerManager>().eggPointText == null)
+                {
+                    Debug.LogWarning("playerone still null");
+                    playerOne.GetComponent<PlayerManager>().eggPointText = GameObject.FindWithTag("PlayerOnePoint").GetComponent<TextMeshProUGUI>();
+                }
+
+                PhotonNetwork.Instantiate(playerOne.name, playerOneSpawn.transform.position, Quaternion.identity);
+            }
+            else if(playerCount <= 2)
+            {
+                while(playerTwo.GetComponent<PlayerManager>().eggPointText == null)
+                {
+                    Debug.LogWarning("playertwo still null");
+                    playerTwo.GetComponent<PlayerManager>().eggPointText = GameObject.FindWithTag("PlayerTwoPoint").GetComponent<TextMeshProUGUI>();
+                }
+
+                PhotonNetwork.Instantiate(playerTwo.name, playerTwoSpawn.transform.position, Quaternion.identity);
+            }
+        }
+        else
+        {
+            Debug.Log("Player is not in a room.");
+        }
+    }
+
+    
+}
+
+
+
+
+/*
 Copyright 2021 Heroic Labs
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +65,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+/*
 using Nakama;
 using Nakama.TinyJson;
 using System.Collections;
@@ -341,4 +393,4 @@ public class GameManager : MonoBehaviour
     //     // So in this instance we will just set a local variable instead.
     //     localDisplayName = displayName;
     // }
-}
+}*/
