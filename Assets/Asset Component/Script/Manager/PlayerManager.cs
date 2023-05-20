@@ -3,8 +3,9 @@ using TMPro;
 using UnityEngine;
 using Photon.Pun;
 
-public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable//MonoSingleton<PlayerManager>
+public class PlayerManager : MonoBehaviourPunCallbacks//MonoSingleton<PlayerManager>
 {
+    /*
     [Header("Egg Point Component")]
     private int currentEggPoint;
     public TextMeshProUGUI eggPointText;
@@ -14,7 +15,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable//MonoSing
         currentEggPoint = 0;
 
         // Assign UI text based on player's photonView ID
-        if (photonView.IsMine)
+        if (PhotonNetwork.IsMasterClient)
         {
             eggPointText = GameObject.FindGameObjectWithTag("PlayerOnePoint").GetComponent<TextMeshProUGUI>();
         }
@@ -26,15 +27,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable//MonoSing
 
     public void AddEggPoint()
     {
-        //photonView.RPC("AddEggPointRPC", RpcTarget.All);
         currentEggPoint++;
-        eggPointText.text = currentEggPoint.ToString();
+
+        photonView.RPC("DisplayEggPoint", RpcTarget.All);
     }
 
     [PunRPC]
-    private void AddEggPointRPC()
+    public void DisplayEggPoint()
     {
-        currentEggPoint++;
         eggPointText.text = currentEggPoint.ToString();
     }
 
@@ -50,6 +50,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable//MonoSing
             eggPointText.text = currentEggPoint.ToString();
         }
     }
+    */
     
 }
 

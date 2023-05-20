@@ -263,9 +263,17 @@ PrefabInstance:
       value: PhotonCreateAndJoinRoom
       objectReference: {fileID: 0}
     - target: {fileID: 9142059934741136991, guid: c15efeec17cf37e499e30ef2063645bb, type: 3}
+      propertyPath: roomSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142059934741136991, guid: c15efeec17cf37e499e30ef2063645bb, type: 3}
       propertyPath: joinInput
       value: 
       objectReference: {fileID: 1848240870}
+    - target: {fileID: 9142059934741136991, guid: c15efeec17cf37e499e30ef2063645bb, type: 3}
+      propertyPath: WaitingRoom
+      value: WaitingRoom
+      objectReference: {fileID: 0}
     - target: {fileID: 9142059934741136991, guid: c15efeec17cf37e499e30ef2063645bb, type: 3}
       propertyPath: createInput
       value: 

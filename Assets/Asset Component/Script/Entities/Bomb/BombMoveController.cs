@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
-public class BombMoveController : MonoBehaviour
+public class BombMoveController : MonoBehaviourPunCallbacks
 {
     [Header("Bomb Main Component")] [SerializeField]
     private float bombSpeed;
@@ -19,12 +20,17 @@ public class BombMoveController : MonoBehaviour
 
     private void Awake()
     {
-        bebekController = GameObject.FindGameObjectWithTag("Player").GetComponent<BebekController>();
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+        //bebekController = GameObject.FindGameObjectWithTag("Player").GetComponent<BebekController>();
         myRb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         BombMove();
         StartCoroutine(BombBebek());
     }
@@ -58,6 +64,7 @@ public class BombMoveController : MonoBehaviour
                 return;
             }
             
+            bebekController = collision.GetComponent<BebekController>();
             bebekController.BebekStuner();
             Destroy(gameObject);
         }

@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-
-public class BombIdleController : MonoBehaviour
+using Photon.Pun;
+public class BombIdleController : MonoBehaviourPunCallbacks
 {
     [Header("Bomb Main Component")]
     [SerializeField] private float bombTimer;
@@ -16,11 +16,15 @@ public class BombIdleController : MonoBehaviour
 
     private void Awake()
     {
-        bebekController = GameObject.FindGameObjectWithTag("Player").GetComponent<BebekController>();
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+        //bebekController = GameObject.FindGameObjectWithTag("Player").GetComponent<BebekController>();
     }
 
     private void Start()
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
         StartCoroutine(BombBebek());
     }
 
@@ -44,6 +48,7 @@ public class BombIdleController : MonoBehaviour
                 return;
             }
             
+            bebekController = collision.GetComponent<BebekController>();
             bebekController.BebekStuner();
             Destroy(gameObject);
         }

@@ -54,6 +54,8 @@ MonoBehaviour:
   - SyncIsTimerStart
   - RequestSyncTimer
   - PauseGame
+  - RPC_SendTimer
+  - DisplayEggPoint
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

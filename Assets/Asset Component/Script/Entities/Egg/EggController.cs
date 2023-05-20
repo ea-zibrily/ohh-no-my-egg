@@ -22,8 +22,17 @@ public class EggController : MonoBehaviourPunCallbacks
     {
         if (other.CompareTag("Player"))
         {
+            PhotonView otherPhotonView = other.GetComponent<PhotonView>();
+            if(otherPhotonView.Owner.IsMasterClient)
+            {
+                PointManager.Instance.AddPointsToPlayer1(1);
+            }
+            else
+            {
+                PointManager.Instance.AddPointsToPlayer2(1);
+            }
             //PlayerManager.Instance.AddEggPoint();
-            other.GetComponent<PlayerManager>().AddEggPoint();
+            //other.GetComponent<PlayerManager>().AddEggPoint();
             Destroy(gameObject);
         }
     }

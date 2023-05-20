@@ -2,7 +2,7 @@
 using Photon.Pun;
 using TMPro;
 
-public class GameManager : MonoSingleton<GameManager>
+public class GameManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject playerOne;
     [SerializeField] private GameObject playerOneSpawn;
@@ -15,9 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
         
         if (PhotonNetwork.InRoom)
         {
-            int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
-            Debug.Log("Player count in room: " + playerCount);
-            if(playerCount <= 1)
+            if(PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate(playerOne.name, playerOneSpawn.transform.position, Quaternion.identity);
                 
@@ -27,7 +25,7 @@ public class GameManager : MonoSingleton<GameManager>
                 //     playerOne.GetComponent<PlayerManager>().eggPointText = GameObject.FindWithTag("PlayerOnePoint").GetComponent<TextMeshProUGUI>();
                 // }
             }
-            else if(playerCount <= 2)
+            else
             {
                 PhotonNetwork.Instantiate(playerTwo.name, playerTwoSpawn.transform.position, Quaternion.identity);
                 

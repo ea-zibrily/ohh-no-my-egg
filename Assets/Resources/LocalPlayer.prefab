@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537aa530e7fa46f3934e88dbee72dc84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eggPointText: {fileID: 0}
 --- !u!114 &8929239755093814263
 MonoBehaviour:
   m_ObjectHideFlags: 0
