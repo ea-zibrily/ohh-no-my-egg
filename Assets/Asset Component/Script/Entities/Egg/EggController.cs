@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
-public class EggController : MonoBehaviour
+public class EggController : MonoBehaviourPunCallbacks
 {
-    public PlayerManager playerManager;
+    //public PlayerManager playerManager;
     
     private void Update()
     {

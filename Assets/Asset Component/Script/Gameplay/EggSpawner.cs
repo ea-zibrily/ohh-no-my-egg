@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
-public class EggSpawner : MonoBehaviour
+public class EggSpawner : MonoBehaviourPunCallbacks
 {
-    [Header("Bomb Position Component")] 
+    [Header("Egg Position Component")] 
     [SerializeField] private float maxEggPositionX;
     [SerializeField] private float minEggPositionX;
     [SerializeField] private float maxEggPositionY;
     [SerializeField] private float minEggPositionY;
     
-    [Header("Bomb Spawn Component")] 
+    [Header("Egg Spawn Component")] 
     [SerializeField] private int eggQuantity;
     [SerializeField] private float eggSpawnTimer;
     public int eggCount { get; set; }
@@ -22,27 +23,33 @@ public class EggSpawner : MonoBehaviour
     [Header("Reference")]
     private BombSpawner bombSpawner;
 
-    private void Awake()
-    {
-        bombSpawner = GameObject.FindGameObjectWithTag("BombSpawner").GetComponent<BombSpawner>();
-    }
-
     private void Start()
     {
         eggCount = 0;
+        // Get the BombSpawner component
+        bombSpawner = GameObject.FindGameObjectWithTag("BombSpawner").GetComponent<BombSpawner>();
+    
     }
-
+    
     private void Update()
     {
-        if (bombSpawner.isBombDestroyed)
+        if (bombSpawner == null || bombSpawner.isBombDestroyed)
         {
             return;
         }
-        
-        StartCoroutine(AyoSpawnBom());
-    }
+        if(PhotonNetwork.IsMasterClient)
+        {
+            AyoSpawnEgg();
 
-    private IEnumerator AyoSpawnBom()
+        }
+    }
+    
+    private void AyoSpawnEgg()
+    {
+        StartCoroutine(SpawnEggCoroutine());
+    }
+    
+    private IEnumerator SpawnEggCoroutine()
     {
         yield return new WaitForSeconds(eggSpawnTimer);
         
@@ -51,8 +58,10 @@ public class EggSpawner : MonoBehaviour
             var eggRandomPosition = new Vector2(Random.Range(minEggPositionX, maxEggPositionX),
                 Random.Range(minEggPositionY, maxEggPositionY));
             
-            Instantiate(eggPrefabs, eggRandomPosition, Quaternion.identity);
+            PhotonNetwork.InstantiateRoomObject(eggPrefabs.name, eggRandomPosition, Quaternion.identity);
             eggCount++;
         }
     }
+
+    
 }

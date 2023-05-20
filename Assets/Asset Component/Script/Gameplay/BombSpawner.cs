@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
-public class BombSpawner : MonoBehaviour
+public class BombSpawner : MonoBehaviourPunCallbacks
 {
     [Header("Bomb Position Component")] 
     [SerializeField] private float maxBombPositionX;
@@ -22,15 +23,19 @@ public class BombSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         if (isBombDestroyed)
         {
             return;
         }
-        
-        StartCoroutine(AyoSpawnBom());
+
+        StartCoroutine(SpawnBombCoroutine());
     }
 
-    private IEnumerator AyoSpawnBom()
+
+    private IEnumerator SpawnBombCoroutine()
     {
         yield return new WaitForSeconds(bombSpawnTimer);
         
@@ -40,7 +45,7 @@ public class BombSpawner : MonoBehaviour
             var bombRandomPosition = new Vector2(Random.Range(minBombPositionX, maxBombPositionX),
                 Random.Range(minBombPositionY, maxBombPositionY));
             
-            Instantiate(bombPrefabs[bombPrefabIndex], bombRandomPosition, Quaternion.identity);
+            PhotonNetwork.InstantiateRoomObject(bombPrefabs[bombPrefabIndex].name, bombRandomPosition, Quaternion.identity);
             bombCount++;
         }
         else

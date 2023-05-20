@@ -12,29 +12,30 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
+        
         if (PhotonNetwork.InRoom)
         {
             int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
             Debug.Log("Player count in room: " + playerCount);
             if(playerCount <= 1)
             {
-                while(playerOne.GetComponent<PlayerManager>().eggPointText == null)
-                {
-                    Debug.LogWarning("playerone still null");
-                    playerOne.GetComponent<PlayerManager>().eggPointText = GameObject.FindWithTag("PlayerOnePoint").GetComponent<TextMeshProUGUI>();
-                }
-
                 PhotonNetwork.Instantiate(playerOne.name, playerOneSpawn.transform.position, Quaternion.identity);
+                
+                // while(playerOne.GetComponent<PlayerManager>().eggPointText == null)
+                // {
+                //     Debug.LogWarning("playerone still null");
+                //     playerOne.GetComponent<PlayerManager>().eggPointText = GameObject.FindWithTag("PlayerOnePoint").GetComponent<TextMeshProUGUI>();
+                // }
             }
             else if(playerCount <= 2)
             {
-                while(playerTwo.GetComponent<PlayerManager>().eggPointText == null)
-                {
-                    Debug.LogWarning("playertwo still null");
-                    playerTwo.GetComponent<PlayerManager>().eggPointText = GameObject.FindWithTag("PlayerTwoPoint").GetComponent<TextMeshProUGUI>();
-                }
-
                 PhotonNetwork.Instantiate(playerTwo.name, playerTwoSpawn.transform.position, Quaternion.identity);
+                
+                // while(playerTwo.GetComponent<PlayerManager>().eggPointText == null)
+                // {
+                //     Debug.LogWarning("playertwo still null");
+                //     playerTwo.GetComponent<PlayerManager>().eggPointText = GameObject.FindWithTag("PlayerTwoPoint").GetComponent<TextMeshProUGUI>();
+                // }
             }
         }
         else

@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class BombEventHandler : MonoBehaviour
+public class BombEventHandler : MonoBehaviourPunCallbacks
 {
     private BombSpawner bombSpawner;
     private EggSpawner eggSpawner;

@@ -42,6 +42,18 @@ MonoBehaviour:
   - Update
   - TimerController
   - OnTimerFinished
+  - AyoSpawnBom
+  - AyoSpawnEgg
+  - AyoSpawnBomb
+  - AddEggPointRPC
+  - UpdatePlayer1Points
+  - UpdatePlayer2Points
+  - StartTimer
+  - SyncTimerValue
+  - TogglePauseUI
+  - SyncIsTimerStart
+  - RequestSyncTimer
+  - PauseGame
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
