@@ -25,26 +25,24 @@ public class PointManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Start()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            // Initialize the points to default values on the master client
-            player1Points = 0;
-            player2Points = 0;
-        }
+        // Initialize the points to default values on the master client
+        player1Points = 0;
+        player2Points = 0;
+        
     }
 
     public void AddPointsToPlayer1(int points)
     {
         // Increase the points of Player 1 and update it on all clients
         player1Points += points;
-        photonView.RPC("UpdatePlayer1Points", RpcTarget.Others, player1Points);
+        photonView.RPC("UpdatePlayer1Points", RpcTarget.All, player1Points);
     }
 
     public void AddPointsToPlayer2(int points)
     {
         // Increase the points of Player 2 and update it on all clients
         player2Points += points;
-        photonView.RPC("UpdatePlayer2Points", RpcTarget.Others, player2Points);
+        photonView.RPC("UpdatePlayer2Points", RpcTarget.All, player2Points);
     }
 
     [PunRPC]

@@ -9,13 +9,15 @@ public class EggController : MonoBehaviourPunCallbacks
     
     private void Update()
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
         StartCoroutine(DestroyEgg());
     }
     
     private IEnumerator DestroyEgg()
     {
         yield return new WaitForSeconds(7f);
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
     
     private void OnTriggerEnter2D(Collider2D other)

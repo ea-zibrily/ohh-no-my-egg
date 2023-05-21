@@ -20,8 +20,6 @@ public class BombMoveController : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        if (!PhotonNetwork.IsMasterClient)
-            return;
         //bebekController = GameObject.FindGameObjectWithTag("Player").GetComponent<BebekController>();
         myRb = GetComponent<Rigidbody2D>();
     }
@@ -47,12 +45,12 @@ public class BombMoveController : MonoBehaviourPunCallbacks
     private IEnumerator BombBebek()
     {
         yield return new WaitForSeconds(bombTimer);
-        Instantiate(mbledos, transform.position, Quaternion.identity);
+        PhotonNetwork.InstantiateRoomObject(mbledos.name, transform.position, Quaternion.identity);
         isMbledos = true;
         
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

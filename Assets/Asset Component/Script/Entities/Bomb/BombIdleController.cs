@@ -25,18 +25,19 @@ public class BombIdleController : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsMasterClient)
             return;
+
         StartCoroutine(BombBebek());
     }
 
     private IEnumerator BombBebek()
     {
         yield return new WaitForSeconds(bombTimer);
-        Instantiate(mbledos, transform.position, Quaternion.identity);
+        PhotonNetwork.InstantiateRoomObject(mbledos.name, transform.position, Quaternion.identity);
         isMbledos = true;
         
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -37,11 +37,6 @@ public class BebekController : MonoBehaviourPunCallbacks
         myAnim = GetComponent<Animator>();
         myView = GetComponent<PhotonView>();
     }
-
-    private void Start()
-    {
-        SetPlayerReady();
-    }
     
     private void FixedUpdate()
     {
@@ -113,13 +108,4 @@ public class BebekController : MonoBehaviourPunCallbacks
         myAnim.SetBool("isStun", false);
     }
    
-    public void SetPlayerReady()
-    {
-        if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
-        {
-            // Update the custom room property for player readiness
-            PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PlayerReady", true } });
-            Debug.Log("player is ready");
-        }
-    }
 }
