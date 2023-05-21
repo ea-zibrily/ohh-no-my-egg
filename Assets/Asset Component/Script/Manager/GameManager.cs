@@ -4,6 +4,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private GameObject playerAllInOne;
     [SerializeField] private GameObject playerOne;
     [SerializeField] private GameObject playerOneSpawn;
     [SerializeField] private GameObject playerTwo;
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             if(PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.Instantiate(playerOne.name, playerOneSpawn.transform.position, Quaternion.identity);
+                //PhotonNetwork.Instantiate(playerOne.name, playerOneSpawn.transform.position, Quaternion.identity);
+                PhotonNetwork.Instantiate(playerAllInOne.name, playerOneSpawn.transform.position, Quaternion.identity);
                 
                 // while(playerOne.GetComponent<PlayerManager>().eggPointText == null)
                 // {
@@ -27,7 +29,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                PhotonNetwork.Instantiate(playerTwo.name, playerTwoSpawn.transform.position, Quaternion.identity);
+                //PhotonNetwork.Instantiate(playerTwo.name, playerTwoSpawn.transform.position, Quaternion.identity);
+                PhotonNetwork.Instantiate(playerAllInOne.name, playerTwoSpawn.transform.position, Quaternion.identity);
                 
                 // while(playerTwo.GetComponent<PlayerManager>().eggPointText == null)
                 // {

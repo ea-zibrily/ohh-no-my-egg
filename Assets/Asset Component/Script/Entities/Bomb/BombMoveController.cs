@@ -20,6 +20,8 @@ public class BombMoveController : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
         //bebekController = GameObject.FindGameObjectWithTag("Player").GetComponent<BebekController>();
         myRb = GetComponent<Rigidbody2D>();
     }
@@ -64,7 +66,7 @@ public class BombMoveController : MonoBehaviourPunCallbacks
             
             bebekController = collision.GetComponent<BebekController>();
             bebekController.BebekStuner();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

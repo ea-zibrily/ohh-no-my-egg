@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombSpeed: 8
   bombTimer: 7.05
-  mbledos: {fileID: 6188646490060140370, guid: 63f1b348d6eba6641a8717ac47da5658, type: 3}
+  mbledos: {fileID: 6188646490060140370, guid: ff1a3c48b798bc84798e6d97f165bd9b, type: 3}
   isMbledos: 0
 --- !u!114 &6418905818108966131
 MonoBehaviour:
@@ -250,10 +250,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
+  ShowParameterInspector: 0
   m_SynchronizeParameters: []
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &7073938271497673678
 MonoBehaviour:

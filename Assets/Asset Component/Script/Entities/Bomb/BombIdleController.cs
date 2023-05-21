@@ -51,7 +51,7 @@ public class BombIdleController : MonoBehaviourPunCallbacks
             
             bebekController = collision.GetComponent<BebekController>();
             bebekController.BebekStuner();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

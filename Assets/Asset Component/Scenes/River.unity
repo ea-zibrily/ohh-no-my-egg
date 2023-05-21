@@ -648,8 +648,8 @@ MonoBehaviour:
   bombQuantity: 4
   bombSpawnTimer: 3.5
   bombPrefabs:
-  - {fileID: 7240399476574280180, guid: ed857919d713c844096093b6dc5a1d99, type: 3}
-  - {fileID: 7240399476574280180, guid: 3150249972c4ae944a409cbbfd384e90, type: 3}
+  - {fileID: 7240399476574280180, guid: 4b9d571dd6b090642a25fdf8254ab804, type: 3}
+  - {fileID: 7240399476574280180, guid: 800fc2fa37ada094e912c26ae9aa8cc3, type: 3}
 --- !u!114 &931844379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,7 +1167,7 @@ MonoBehaviour:
   minEggPositionY: -2.5
   eggQuantity: 2
   eggSpawnTimer: 4
-  eggPrefabs: {fileID: 1297567548122801611, guid: 14a64af9ac7c2bc4780445621793563f, type: 3}
+  eggPrefabs: {fileID: 1297567548122801611, guid: 17238ea5c52a431469614e823b8b13b2, type: 3}
 --- !u!114 &1395482817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1832,6 +1832,10 @@ PrefabInstance:
       objectReference: {fileID: 6034014755888762907, guid: ed392f6cff0ec584ab90696dc57ae398, type: 3}
     - target: {fileID: 3010386361615910241, guid: 4e722e0ea6383f443bf7c349ed26f70d, type: 3}
       propertyPath: playerTwo
+      value: 
+      objectReference: {fileID: 6034014755888762907, guid: ed392f6cff0ec584ab90696dc57ae398, type: 3}
+    - target: {fileID: 3010386361615910241, guid: 4e722e0ea6383f443bf7c349ed26f70d, type: 3}
+      propertyPath: playerAllInOne
       value: 
       objectReference: {fileID: 6034014755888762907, guid: ed392f6cff0ec584ab90696dc57ae398, type: 3}
     - target: {fileID: 3010386361615910241, guid: 4e722e0ea6383f443bf7c349ed26f70d, type: 3}

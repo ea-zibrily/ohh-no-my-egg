@@ -25,5 +25,11 @@ public class BombEventHandler : MonoBehaviourPunCallbacks
         bombSpawner.bombCount = 0;
         eggSpawner.eggCount = 0;
     }
-    public void DestroyBombAnimation() => Destroy(gameObject);
+    public void DestroyBombAnimation()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
+        PhotonNetwork.Destroy(gameObject);
+    } 
 }
