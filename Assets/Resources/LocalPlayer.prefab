@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6034014755888762902}
   - component: {fileID: 6034014755888762903}
   - component: {fileID: 6034014755888762904}
-  - component: {fileID: 2960928494111256199}
   - component: {fileID: 8929239755093814263}
   - component: {fileID: 8101823029265159634}
   - component: {fileID: 2834786914252190866}
@@ -156,18 +155,6 @@ MonoBehaviour:
     bebekNgananLur: 0
     bebekStun: 0
     bebekVelocity: {x: 0, y: 0}
---- !u!114 &2960928494111256199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6034014755888762907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 537aa530e7fa46f3934e88dbee72dc84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8929239755093814263
 MonoBehaviour:
   m_ObjectHideFlags: 0

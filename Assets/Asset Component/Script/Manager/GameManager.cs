@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        
-        if (PhotonNetwork.InRoom)
+        if (PhotonNetwork.IsConnectedAndReady)
         {
             if(PhotonNetwork.IsMasterClient)
             {

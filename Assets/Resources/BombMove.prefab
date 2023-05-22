@@ -253,7 +253,7 @@ MonoBehaviour:
   ShowParameterInspector: 0
   m_SynchronizeParameters: []
   m_SynchronizeLayers:
-  - SynchronizeType: 2
+  - SynchronizeType: 0
     LayerIndex: 0
 --- !u!114 &7073938271497673678
 MonoBehaviour:

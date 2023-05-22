@@ -57,6 +57,9 @@ public class BombMoveController : MonoBehaviourPunCallbacks
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         if (collision.CompareTag("Player"))
         {
             if (!isMbledos)
@@ -67,6 +70,8 @@ public class BombMoveController : MonoBehaviourPunCallbacks
             bebekController = collision.GetComponent<BebekController>();
             bebekController.BebekStuner();
             //Destroy(gameObject);
+            //PhotonNetwork.Destroy(gameObject);
+
         }
     }
 

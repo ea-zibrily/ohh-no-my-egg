@@ -6,7 +6,7 @@ using Photon.Pun;
 public class EggController : MonoBehaviourPunCallbacks
 {
     //public PlayerManager playerManager;
-    
+
     private void Update()
     {
         if (!PhotonNetwork.IsMasterClient)
@@ -22,6 +22,9 @@ public class EggController : MonoBehaviourPunCallbacks
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         if (other.CompareTag("Player"))
         {
             PhotonView otherPhotonView = other.GetComponent<PhotonView>();
@@ -35,7 +38,8 @@ public class EggController : MonoBehaviourPunCallbacks
             }
             //PlayerManager.Instance.AddEggPoint();
             //other.GetComponent<PlayerManager>().AddEggPoint();
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
