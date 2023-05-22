@@ -93,9 +93,16 @@ public class BebekController : MonoBehaviourPunCallbacks
         {
             myAnim.SetBool("isWalk", false);
         }
-    }
+    }   
     
+    //[PunRPC]
     public void BebekStuner()
+    {
+        photonView.RPC("BebekStunerRPC", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void BebekStunerRPC()
     {
         myRb.velocity = Vector2.zero;
         myAnim.SetBool("isStun", true);
@@ -103,6 +110,15 @@ public class BebekController : MonoBehaviourPunCallbacks
     }
 
     public void SetToNormal()
+    {
+        photonView.RPC("SetToNormalRPC", RpcTarget.All);
+        
+        // bebekStats.bebekStun = false;
+        // myAnim.SetBool("isStun", false);
+    }
+
+    [PunRPC]
+    public void SetToNormalRPC()
     {
         bebekStats.bebekStun = false;
         myAnim.SetBool("isStun", false);

@@ -56,6 +56,9 @@ MonoBehaviour:
   - PauseGame
   - RPC_SendTimer
   - DisplayEggPoint
+  - PlayBebekStunerAnimation
+  - SetToNormalRPC
+  - BebekStunerRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
