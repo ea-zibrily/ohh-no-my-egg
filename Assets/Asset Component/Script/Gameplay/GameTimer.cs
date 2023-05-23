@@ -37,7 +37,8 @@ public class GameTimer : MonoBehaviourPunCallbacks, IPunObservable
         if (TimerValue > 0)
         {
             TimerValue -= Time.deltaTime;
-            UpdateTimerUI(TimerValue);
+            //UpdateTimerUI(TimerValue);
+            photonView.RPC("UpdateTimerUI", RpcTarget.All, TimerValue);
         }
         else
         {
@@ -68,7 +69,8 @@ public class GameTimer : MonoBehaviourPunCallbacks, IPunObservable
     {
         TimerValue = timerValue;
     }
-
+    
+    [PunRPC]
     private void UpdateTimerUI(float timer)
     {
         timer += 1;
