@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -13,6 +11,8 @@ public class PhotonCreateAndJoinRoom : MonoBehaviourPunCallbacks
     [SerializeField] private string WaitingRoom;
     public TMP_InputField createInput;
     public TMP_InputField joinInput;
+
+    [SerializeField] private TextMeshProUGUI PlayerCountText;
 
     public void CreateRoom()
     {
@@ -36,5 +36,18 @@ public class PhotonCreateAndJoinRoom : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel(WaitingRoom);
+    }
+
+    private void Update()
+    {   
+        //photonView.RPC("UpdatePlayerCountRPC", RpcTarget.All);
+        PlayerCountText.text = string.Format("Player Count : {0}/{1}", PhotonNetwork.CountOfPlayers, 20);
+
+    }
+
+    [PunRPC]
+    private void UpdatePlayerCountRPC()
+    {
+        PlayerCountText.text = string.Format("Player Count : {0}/{0}", PhotonNetwork.CountOfPlayers, 20);
     }
 }

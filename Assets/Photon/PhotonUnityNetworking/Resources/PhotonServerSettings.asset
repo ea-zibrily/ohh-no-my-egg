@@ -60,6 +60,9 @@ MonoBehaviour:
   - SetToNormalRPC
   - BebekStunerRPC
   - UpdateTimerUI
+  - Notification
+  - NotifyOtherPlayers
+  - UpdatePlayerCountRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

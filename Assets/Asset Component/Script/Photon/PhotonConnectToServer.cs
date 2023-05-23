@@ -19,12 +19,16 @@ public class PhotonConnectToServer : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
+        //photonView.RPC("NotifyOtherPlayers", RpcTarget.All);
+        //NotifyPlayers();
         SceneManager.LoadScene("Lobby");
     }
 
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    {
-        base.OnRoomListUpdate(roomList);
-    }
-
+    //[PunRPC]
+    // private void NotifyPlayers()
+    // {
+    //     Debug.Log("A player has joined the server.");
+    //     // Show the notification to other players or perform any other actions
+    //     Debug.Log("Players in server (including rooms): " + PhotonNetwork.CountOfPlayers);
+    // }
 }
