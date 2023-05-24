@@ -51,7 +51,8 @@ public class PointManager : MonoBehaviourPunCallbacks, IPunObservable
         // Update the points of Player 1 on all clients
         player1Points = newPoints;
         player1PointsDisplay.text = player1Points.ToString();
-
+        
+        Debug.Log($"Player 1 get Points: {player1Points}");
     }
 
     [PunRPC]
@@ -60,6 +61,8 @@ public class PointManager : MonoBehaviourPunCallbacks, IPunObservable
         // Update the points of Player 2 on all clients
         player2Points = newPoints;
         player2PointsDisplay.text = player2Points.ToString();
+        
+        Debug.Log($"Player 2 get Points: {player2Points}");
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

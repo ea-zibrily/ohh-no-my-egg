@@ -109,13 +109,7 @@ public class BebekController : MonoBehaviourPunCallbacks
         bebekStats.bebekStun = true;
     }
 
-    public void SetToNormal()
-    {
-        photonView.RPC("SetToNormalRPC", RpcTarget.All);
-        
-        // bebekStats.bebekStun = false;
-        // myAnim.SetBool("isStun", false);
-    }
+    public void SetToNormal() => photonView.RPC("SetToNormalRPC", RpcTarget.All);
 
     [PunRPC]
     public void SetToNormalRPC()
